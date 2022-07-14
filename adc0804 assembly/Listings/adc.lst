@@ -1,0 +1,94 @@
+A51 MACRO ASSEMBLER  ADC                                                                  11/22/2017 23:14:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN .\Objects\adc.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE adc.s SET(SMALL) DEBUG PRINT(.\Listings\adc.lst) OBJECT(.\Objects\adc.o
+                      bj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0091                 1                     rdbar equ P1.1           ;Read signal P1.0
+
+  0092                 2                     wrbar equ P1.2           ;Write signal P1.1
+
+                       3                     
+
+  0093                 4                     intr equ P1.3         ;INTR signal P1.3
+
+                       5              
+
+  00A0                 6                     adc_port equ P2       ;ADC data pins P2
+
+  0030                 7                     adc_val equ 30H       ;ADC read value stored here
+
+  00B0                 8                             output equ P3
+
+                       9              
+
+0000                  10                     org 0H
+
+0000 75A0FF           11                             mov adc_port,#0FFH      
+
+0003 75B000           12                             mov output,#00
+
+0006                  13     start:                    ;Start of Program
+
+0006 110A             14                     acall conv            ;Start ADC conversion             
+
+0008 80FC             15                     sjmp start            ;Do it again         
+
+000A                  16     conv:                     ;Start of Conversion
+
+000A D291             17                             setb rdbar
+
+000C C292             18                             clr wrbar                ;Make WR Low
+
+000E 00               19                             nop
+
+000F D292             20                             setb wrbar         
+
+0011                  21     wait:
+
+0011 2093FD           22                             jb intr,wait          ;Wait for INTR signal             
+
+0014 C291             23                             clr rdbar                ;Make RD Low
+
+0016 85A0B0           24                             mov output,adc_port
+
+0019 00               25                             nop
+
+001A D293             26                             setb intr
+
+                      27                     end                  ;Reading done
+
+                                                     
+
+                                                     
+
+A51 MACRO ASSEMBLER  ADC                                                                  11/22/2017 23:14:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADC_PORT . . . . .  D ADDR   00A0H   A   
+ADC_VAL. . . . . .  N NUMB   0030H   A   
+CONV . . . . . . .  C ADDR   000AH   A   
+INTR . . . . . . .  B ADDR   0090H.3 A   
+OUTPUT . . . . . .  D ADDR   00B0H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RDBAR. . . . . . .  B ADDR   0090H.1 A   
+START. . . . . . .  C ADDR   0006H   A   
+WAIT . . . . . . .  C ADDR   0011H   A   
+WRBAR. . . . . . .  B ADDR   0090H.2 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

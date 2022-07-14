@@ -1,0 +1,79 @@
+A51 MACRO ASSEMBLER  SERTX                                                                09/24/2021 14:39:31 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\SERTX.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SERTX.ASM SET(SMALL) DEBUG PRINT(.\Listings\SERTX.lst) OBJECT(.\Objects
+                      \SERTX.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0200                   1             ORG 200H
+0200                   2     TABLE:  
+0200 48454C4C          3         DB 'H', 'E', 'L', 'L','O',13                
+0204 4F0D                    
+0000                   4             ORG 00
+0000 759850            5     MOV SCON,#50H
+0003 758920            6     MOV TMOD,#20H
+0006 758DFD            7     MOV TH1,#0FDH
+0009 758BFD            8     MOV TL1,#0FDH
+000C D28E              9     SETB TR1
+000E                  10     MAIN:   
+000E 7806             11     MOV R0,#6h   
+0010 7A00             12     MOV R2,#00H
+0012 900200           13     MOV DPTR, #TABLE 
+0015                  14     LOOP0:
+0015 EA               15     MOV A,R2
+0016 93               16     MOVC A, @A+DPTR   
+0017 F599             17     MOV SBUF,A
+0019 3099FD           18     WAIT: JNB TI,WAIT
+001C C299             19     CLR TI
+001E 0A               20     INC R2
+001F 1125             21     ACALL DELAY 
+0021 D8F2             22     DJNZ R0,LOOP0
+0023 80E9             23     SJMP MAIN
+                      24     
+                      25     
+0025                  26     DELAY:
+0025 7BFF             27         MOV R3,#0FFH
+0027                  28     LOOP2:   
+0027 7CFF             29         MOV    R4,#0FFH
+0029                  30     LOOP1:
+0029 DCFE             31         DJNZ R4,LOOP1
+002B DBFA             32         DJNZ R3,LOOP2
+002D 22               33         RET   
+                      34             
+                      35             
+                      36     
+                      37     END
+                                     
+                             
+                             
+A51 MACRO ASSEMBLER  SERTX                                                                09/24/2021 14:39:31 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0025H   A   
+LOOP0. . . . . . .  C ADDR   0015H   A   
+LOOP1. . . . . . .  C ADDR   0029H   A   
+LOOP2. . . . . . .  C ADDR   0027H   A   
+MAIN . . . . . . .  C ADDR   000EH   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TABLE. . . . . . .  C ADDR   0200H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+WAIT . . . . . . .  C ADDR   0019H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

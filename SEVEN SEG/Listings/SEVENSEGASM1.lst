@@ -1,0 +1,89 @@
+A51 MACRO ASSEMBLER  SEVENSEGASM1                                                         11/30/2017 07:10:47 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN .\Objects\SEVENSEGASM1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SEVENSEGASM1.ASM SET(SMALL) DEBUG PRINT(.\Listings\SEVENSEGASM1.lst) OB
+                      JECT(.\Objects\SEVENSEGASM1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0200                   1     ORG 200H
+
+0200                   2     TABLE:  
+
+0200 3F065B4F          3         DB 3FH,06H, 5BH, 4FH,66H,6DH, 7DH, 07H, 7FH, 6FH
+
+0204 666D7D07                
+0208 7F6F                    
+                       4     
+
+0000                   5     org 00h
+
+0000                   6     MAIN:
+
+0000 780A              7         MOV R0,#0Ah   
+
+0002 7A00              8         MOV R2,#00H
+
+                       9     
+
+0004 900200           10         MOV DPTR, #TABLE 
+
+0007                  11     LOOP0:
+
+0007 EA               12         MOV A,R2
+
+0008 93               13         MOVC A, @A+DPTR        
+
+0009 F590             14         MOV P1,A
+
+000B 1112             15         ACALL DELAY       
+
+000D 0A               16         INC R2
+
+000E D8F7             17         DJNZ R0,LOOP0
+
+0010 80EE             18         SJMP MAIN
+
+                      19     
+
+0012                  20     DELAY:
+
+0012 7BFF             21         MOV R3,#0FFH
+
+0014                  22     LOOP2:    
+
+0014 7CFF             23         MOV    R4,#0FFH
+
+0016                  24     LOOP1:
+
+0016 DCFE             25         DJNZ R4,LOOP1
+
+0018 DBFA             26         DJNZ R3,LOOP2
+
+001A 22               27         RET   
+
+                      28         END
+
+A51 MACRO ASSEMBLER  SEVENSEGASM1                                                         11/30/2017 07:10:47 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0012H   A   
+LOOP0. . . . . . .  C ADDR   0007H   A   
+LOOP1. . . . . . .  C ADDR   0016H   A   
+LOOP2. . . . . . .  C ADDR   0014H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TABLE. . . . . . .  C ADDR   0200H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

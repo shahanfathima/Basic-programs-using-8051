@@ -1,0 +1,3 @@
+".\Objects\hwintasm.obj" 
+TO ".\Objects\hardware int" 
+PRINT(".\Listings\hardware int.m51") RAMSIZE(256) 

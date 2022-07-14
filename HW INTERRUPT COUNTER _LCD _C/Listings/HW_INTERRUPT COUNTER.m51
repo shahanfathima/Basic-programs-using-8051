@@ -1,0 +1,287 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/21/2017  20:42:24  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\lcd.obj TO .\Objects\HW_INTERRUPT COUNTER PRINT (.\Listings\HW_INTERRUPT COUNTER.m
+>> 51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\lcd.obj (LCD)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (PRINTF)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPROUND)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPCONVERT)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPADD)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FTNPWR)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CSTPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?PLDIIDATA)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CCASE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (PUTCHAR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\HW_INTERRUPT COUNTER (LCD)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?LCD
+                    000AH     0016H                  *** GAP ***
+            BIT     0020H.0   0001H.1   UNIT         _BIT_GROUP_
+                    0021H.1   0000H.7                *** GAP ***
+            DATA    0022H     002EH     UNIT         _DATA_GROUP_
+            IDATA   0050H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     07FAH                  *** GAP ***
+            CODE    0800H     0518H     UNIT         ?C?LIB_CODE
+            CODE    0D18H     046FH     UNIT         ?PR?PRINTF?PRINTF
+            CODE    1187H     008CH     UNIT         ?C_C51STARTUP
+            CODE    1213H     0073H     UNIT         ?PR?MAIN?LCD
+            CODE    1286H     002BH     UNIT         ?PR?_LCD_DATA_STRING?LCD
+            CODE    12B1H     0028H     UNIT         ?PR?_LCD_CMDWRITE?LCD
+            CODE    12D9H     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+            CODE    1300H     0026H     UNIT         ?PR?_LCD_DATAWRITE?LCD
+            CODE    1326H     0022H     UNIT         ?PR?_DELAY?LCD
+            CODE    1348H     000DH     UNIT         ?PR?EXTR0?LCD
+            CODE    1355H     000AH     UNIT         ?CO?LCD
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2017  20:42:24  PAGE 2
+
+
+            CODE    135FH     0005H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\HW_INTERRUPT COUNTER (LCD)
+
+
+SEGMENT                             BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT            START    LENGTH     START    LENGTH
+--------------------------------------------------------------------
+?C_C51STARTUP                    -----    -----      -----    -----
+  +--> ?PR?MAIN?LCD
+  +--> ?C_INITSEG
+
+?PR?MAIN?LCD                     -----    -----      0022H    0012H
+  +--> ?PR?_LCD_CMDWRITE?LCD
+  +--> ?CO?LCD
+  +--> ?PR?_LCD_DATA_STRING?LCD
+  +--> ?PR?PRINTF?PRINTF
+
+?PR?_LCD_CMDWRITE?LCD            -----    -----      -----    -----
+  +--> ?PR?_DELAY?LCD
+
+?PR?_LCD_DATA_STRING?LCD         -----    -----      0034H    0005H
+  +--> ?PR?_LCD_DATAWRITE?LCD
+
+?PR?_LCD_DATAWRITE?LCD           -----    -----      -----    -----
+  +--> ?PR?_DELAY?LCD
+
+?PR?PRINTF?PRINTF                0020H.0  0001H.1    0034H    001CH
+  +--> ?PR?PUTCHAR?PUTCHAR
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\HW_INTERRUPT COUNTER (LCD)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LCD
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:1300H         PUBLIC        _Lcd_DataWrite
+  D:00A0H         PUBLIC        P2
+  D:00A8H         PUBLIC        IE
+  C:1330H         PUBLIC        _delay
+  C:12B1H         PUBLIC        _Lcd_CmdWrite
+  C:1213H         PUBLIC        main
+  D:0008H         PUBLIC        count
+  C:1286H         PUBLIC        _lcd_data_string
+  B:00A0H.2       PUBLIC        LCD_EN
+  B:0088H.0       PUBLIC        IT0
+  B:00A0H.0       PUBLIC        LCD_RS
+  B:00A0H.1       PUBLIC        LCD_RW
+  C:1348H         PUBLIC        extr0
+  -------         PROC          L?0019
+  -------         ENDPROC       L?0019
+  -------         PROC          _DELAY
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2017  20:42:24  PAGE 3
+
+
+  D:0006H         SYMBOL        cnt
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:1330H         LINE#         16
+  C:1330H         LINE#         17
+  C:1330H         LINE#         18
+  C:1347H         LINE#         19
+  -------         ENDPROC       _DELAY
+  -------         PROC          _LCD_DATAWRITE
+  D:0003H         SYMBOL        dat
+  C:1300H         LINE#         23
+  C:1302H         LINE#         24
+  C:1302H         LINE#         25
+  C:1307H         LINE#         26
+  C:1309H         LINE#         27
+  C:1309H         LINE#         28
+  C:1309H         LINE#         29
+  C:1309H         LINE#         30
+  C:130CH         LINE#         31
+  C:1312H         LINE#         32
+  C:1314H         LINE#         33
+  C:1316H         LINE#         34
+  C:131DH         LINE#         35
+  -------         ENDPROC       _LCD_DATAWRITE
+  -------         PROC          _LCD_CMDWRITE
+  D:0003H         SYMBOL        cmd
+  C:12B1H         LINE#         41
+  C:12B3H         LINE#         42
+  C:12B3H         LINE#         43
+  C:12B8H         LINE#         44
+  C:12BAH         LINE#         45
+  C:12BAH         LINE#         46
+  C:12BAH         LINE#         47
+  C:12BAH         LINE#         48
+  C:12BDH         LINE#         49
+  C:12C3H         LINE#         50
+  C:12C5H         LINE#         51
+  C:12C7H         LINE#         52
+  C:12C9H         LINE#         53
+  C:12D0H         LINE#         54
+  C:12D2H         LINE#         55
+  -------         ENDPROC       _LCD_CMDWRITE
+  -------         PROC          _LCD_DATA_STRING
+  D:0034H         SYMBOL        str
+  -------         DO            
+  D:0037H         SYMBOL        i
+  -------         ENDDO         
+  C:1286H         LINE#         59
+  C:128CH         LINE#         60
+  C:128CH         LINE#         61
+  C:1291H         LINE#         62
+  C:12A3H         LINE#         63
+  C:12A3H         LINE#         64
+  C:12A6H         LINE#         65
+  C:12AEH         LINE#         67
+  C:12B0H         LINE#         69
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2017  20:42:24  PAGE 4
+
+
+  -------         ENDPROC       _LCD_DATA_STRING
+  -------         PROC          MAIN
+  -------         DO            
+  D:0022H         SYMBOL        buffer
+  D:002CH         SYMBOL        value
+  D:002EH         SYMBOL        value1
+  D:0032H         SYMBOL        prevcount
+  -------         ENDDO         
+  C:1213H         LINE#         73
+  C:1213H         LINE#         75
+  C:1213H         LINE#         78
+  C:1219H         LINE#         79
+  C:1225H         LINE#         83
+  C:122AH         LINE#         84
+  C:122FH         LINE#         85
+  C:1234H         LINE#         86
+  C:1239H         LINE#         87
+  C:123BH         LINE#         88
+  C:123EH         LINE#         90
+  C:1243H         LINE#         91
+  C:124CH         LINE#         92
+  C:124CH         LINE#         94
+  C:124CH         LINE#         96
+  C:1258H         LINE#         97
+  C:1258H         LINE#         99
+  C:125DH         LINE#         100
+  C:1275H         LINE#         101
+  C:127EH         LINE#         102
+  C:1284H         LINE#         103
+  C:1284H         LINE#         104
+  -------         ENDPROC       MAIN
+  -------         PROC          EXTR0
+  C:1348H         LINE#         111
+  C:134AH         LINE#         113
+  C:1352H         LINE#         115
+  -------         ENDPROC       EXTR0
+  -------         ENDMOD        LCD
+
+  -------         MODULE        PRINTF
+  D:0034H         PUBLIC        ?_PRINTF?BYTE
+  D:0034H         PUBLIC        ?_SPRINTF?BYTE
+  C:0D7AH         PUBLIC        _PRINTF
+  C:0D74H         PUBLIC        _SPRINTF
+  -------         ENDMOD        PRINTF
+
+  -------         MODULE        ?C?FPROUND
+  C:0800H         PUBLIC        ?C?FPROUND
+  -------         ENDMOD        ?C?FPROUND
+
+  -------         MODULE        ?C?FPCONVERT
+  C:082FH         PUBLIC        ?C?FPCONVERT
+  -------         ENDMOD        ?C?FPCONVERT
+
+  -------         MODULE        ?C?FPADD
+  C:0939H         PUBLIC        ?C?FPADD
+  C:0935H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2017  20:42:24  PAGE 5
+
+
+
+  -------         MODULE        ?C?FPMUL
+  C:0A2AH         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0B33H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FTNPWR
+  C:0C00H         PUBLIC        ?C?FTNPWR
+  -------         ENDMOD        ?C?FTNPWR
+
+  -------         MODULE        ?C?CLDPTR
+  C:0C8AH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0CA3H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:0CD0H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?PLDIIDATA
+  C:0CE2H         PUBLIC        ?C?PLDIIDATA
+  -------         ENDMOD        ?C?PLDIIDATA
+
+  -------         MODULE        ?C?CCASE
+  C:0CF2H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+  -------         MODULE        PUTCHAR
+  C:12D9H         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 012CH BYTE (14%) *
+******************************************************************************
+
+Program Size: data=58.1 xdata=0 code=2922
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

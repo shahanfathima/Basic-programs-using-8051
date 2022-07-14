@@ -1,0 +1,174 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/23/2017  06:52:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE DAC0808.obj, Main.obj TO DAC
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  DAC0808.obj (DAC0808)
+  Main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LIMUL)
+
+
+LINK MAP OF MODULE:  DAC (DAC0808)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?_GENERATE_DAC_VOLTAGE?DAC0808
+            DATA    000CH     0004H     UNIT         _DATA_GROUP_
+            IDATA   0010H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0162H     UNIT         ?C?LIB_CODE
+            CODE    0962H     002FH     UNIT         ?PR?_DELAY_SEC?MAIN
+            CODE    0991H     002CH     UNIT         ?PR?_GENERATE_DAC_VOLTAGE?DAC0808
+            CODE    09BDH     0021H     UNIT         ?PR?MAIN?MAIN
+            CODE    09DEH     0019H     UNIT         ?PR?_DELAY_US?MAIN
+            CODE    09F7H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0A03H     0004H     UNIT         ?PR?INITDAC?DAC0808
+
+
+
+OVERLAY MAP OF MODULE:   DAC (DAC0808)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                             -----    -----
+  +--> ?PR?INITDAC?DAC0808
+  +--> ?PR?_DELAY_SEC?MAIN
+
+?PR?_DELAY_SEC?MAIN                       000CH    0004H
+  +--> ?PR?_DELAY_US?MAIN
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/23/2017  06:52:07  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  DAC (DAC0808)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DAC0808
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0991H         PUBLIC        _Generate_DAC_Voltage
+  C:0A03H         PUBLIC        InitDAC
+  -------         PROC          INITDAC
+  C:0A03H         LINE#         4
+  C:0A03H         LINE#         5
+  C:0A03H         LINE#         6
+  C:0A06H         LINE#         7
+  -------         ENDPROC       INITDAC
+  -------         PROC          _GENERATE_DAC_VOLTAGE
+  D:0006H         SYMBOL        mV
+  -------         DO            
+  D:0008H         SYMBOL        V
+  -------         ENDDO         
+  C:0991H         LINE#         10
+  C:0991H         LINE#         11
+  C:0991H         LINE#         12
+  C:09A9H         LINE#         13
+  C:09BAH         LINE#         15
+  C:09BCH         LINE#         16
+  -------         ENDPROC       _GENERATE_DAC_VOLTAGE
+  -------         ENDMOD        DAC0808
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:09BDH         PUBLIC        main
+  C:0962H         PUBLIC        _delay_sec
+  C:09DEH         PUBLIC        _delay_us
+  -------         PROC          MAIN
+  C:09BDH         LINE#         9
+  C:09BDH         LINE#         10
+  C:09BDH         LINE#         11
+  C:09C0H         LINE#         12
+  C:09C2H         LINE#         13
+  C:09C4H         LINE#         14
+  C:09C6H         LINE#         16
+  C:09C9H         LINE#         18
+  C:09C9H         LINE#         19
+  C:09C9H         LINE#         21
+  C:09CCH         LINE#         22
+  C:09D3H         LINE#         23
+  C:09D6H         LINE#         24
+  C:09DCH         LINE#         31
+  -------         ENDPROC       MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/23/2017  06:52:07  PAGE 3
+
+
+  -------         PROC          _DELAY_SEC
+  D:000CH         SYMBOL        d
+  -------         DO            
+  D:000EH         SYMBOL        i
+  -------         ENDDO         
+  C:0962H         LINE#         37
+  C:0966H         LINE#         38
+  C:0966H         LINE#         41
+  C:097FH         LINE#         42
+  C:0990H         LINE#         43
+  -------         ENDPROC       _DELAY_SEC
+  -------         PROC          _DELAY_US
+  D:0006H         SYMBOL        d
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0006H         SYMBOL        limit
+  -------         ENDDO         
+  C:09DEH         LINE#         48
+  C:09DEH         LINE#         49
+  C:09DEH         LINE#         51
+  C:09E5H         LINE#         53
+  C:09F6H         LINE#         54
+  -------         ENDPROC       _DELAY_US
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?IMUL
+  C:0800H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?UIDIV
+  C:0812H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:08A3H         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+  -------         MODULE        ?C?LIMUL
+  C:0935H         PUBLIC        ?C?LIMUL
+  -------         ENDMOD        ?C?LIMUL
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GENERATE_DAC_VOLTAGE?DAC0808
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0099H BYTE ( 7%) *
+******************************************************************************
+
+Program Size: data=17.0 xdata=0 code=522
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

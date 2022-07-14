@@ -1,0 +1,3 @@
+".\Objects\TIMERMODE1.obj" 
+TO ".\Objects\timer mode1 _poll" 
+PRINT(".\Listings\timer mode1 _poll.m51") RAMSIZE(256) 

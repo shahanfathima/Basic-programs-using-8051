@@ -1,0 +1,138 @@
+C51 COMPILER V9.60.0.0   LCD                                                               07/08/2022 11:54:52 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN .\Objects\lcd.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lcd.l
+                    -st) TABS(2) OBJECT(.\Objects\lcd.obj)
+
+line level    source
+
+   1          #include<REGX52.H>
+   2          #include<stdio.h>
+   3          
+   4          #define LcdDataBus P2 
+   5          sbit LCD_RS = P2^0; 
+   6          sbit LCD_RW = P2^1;
+   7           sbit LCD_EN = P2^2;
+   8           
+   9            
+  10           void Lcd_CmdWrite(char cmd);
+  11           void Lcd_DataWrite(char dat);
+  12           void delay(int cnt);
+  13           
+  14           
+  15           
+  16           void delay(int cnt)
+  17           { int i; 
+  18   1      for(i=0;i<cnt;i++);
+  19   1       } 
+  20          
+  21          void lcd_data_string(unsigned char *str);
+  22           
+  23           void Lcd_DataWrite(char dat)
+  24           { 
+  25   1      LcdDataBus = (dat & 0xF0); //Send higher nibble 
+  26   1      LCD_RS = 1; // Send HIGH pulse on RS pin for selecting data register 
+  27   1      LCD_RW = 0; // Send LOW pulse on RW pin for Write operation
+  28   1       LCD_EN = 1; // Generate a High-to-low pulse on EN pin delay(1000); 
+  29   1      LCD_EN = 0; 
+  30   1      delay(10000); 
+  31   1      LcdDataBus = ((dat<<4) & 0xF0); //Send Lower nibble 
+  32   1      LCD_RS = 1; // Send HIGH pulse on RS pin for selecting data register LCD_RW = 0; // Send LOW pulse on RW p
+             -in for Write operation 
+  33   1      LCD_EN = 1; // Generate a High-to-low pulse on EN pin 
+  34   1      delay(1000); 
+  35   1      LCD_EN = 0; delay(10000); 
+  36   1      }
+  37          
+  38          
+  39          
+  40           
+  41           void Lcd_CmdWrite(char cmd) 
+  42          { 
+  43   1      LcdDataBus = (cmd & 0xF0); //Send higher nibble 
+  44   1      LCD_RS = 0; // Send LOW pulse on RS pin for selecting Command register 
+  45   1      LCD_RW = 0; // Send LOW pulse on RW pin for Write operation
+  46   1       LCD_EN = 1; // Generate a High-to-low pulse on EN pin delay(1000); 
+  47   1      LCD_EN = 0; 
+  48   1      delay(10000); 
+  49   1      LcdDataBus = ((cmd<<4) & 0xF0); //Send Lower nibble 
+  50   1      LCD_RS = 0; // Send LOW pulse on RS pin for selecting Command register 
+  51   1      LCD_RW = 0; // Send LOW pulse on RW pin for Write operation 
+  52   1      LCD_EN = 1; // Generate a High-to-low pulse on EN pin 
+  53   1      delay(1000); 
+C51 COMPILER V9.60.0.0   LCD                                                               07/08/2022 11:54:52 PAGE 2   
+
+  54   1      LCD_EN = 0; 
+  55   1      delay(10000); 
+  56   1      }
+  57          
+  58          
+  59          void lcd_data_string(unsigned char *str) // Function to send data to string
+  60          {
+  61   1      int i=0;
+  62   1      while(str[i]!='\0')
+  63   1      {
+  64   2        Lcd_DataWrite(str[i]);
+  65   2        i++;
+  66   2        //delay(10);
+  67   2      }
+  68   1      return;
+  69   1      }
+  70          
+  71          
+  72          
+  73          main()
+  74          
+  75          {
+  76   1        
+  77   1      char buffer[10];
+  78   1      int value = 123;
+  79   1        float value1 = 12.3;
+  80   1      
+  81   1        
+  82   1        
+  83   1      Lcd_CmdWrite(0x02); // Initialize Lcd in 4-bit mode 
+  84   1      Lcd_CmdWrite(0x28); // enable 5x7 mode for chars 
+  85   1      Lcd_CmdWrite(0x0E); // Display OFF, Cursor ON 
+  86   1      Lcd_CmdWrite(0x01); // Clear Display Lcd_CmdWrite(0x80); // Move the cursor to beginning of first line
+  87   1      
+  88   1        Lcd_DataWrite('j');
+  89   1        Lcd_DataWrite('y');
+  90   1        Lcd_DataWrite('o');
+  91   1        Lcd_DataWrite('t');
+  92   1        Lcd_DataWrite('h');
+  93   1        Lcd_DataWrite('i');
+  94   1      while(1)
+  95   1      
+  96   1      {
+  97   2      // lcd_data_string("hello");
+  98   2        
+  99   2        //sprintf(buffer, "%d", value);
+ 100   2        
+ 101   2        // lcd_data_string(buffer);
+ 102   2        //  sprintf(buffer, "%.02f", value1);
+ 103   2        //   lcd_data_string(buffer);
+ 104   2        
+ 105   2      }
+ 106   1      
+ 107   1      
+ 108   1      }
+*** WARNING C280 IN LINE 77 OF lcd.c: 'buffer': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    225    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   LCD                                                               07/08/2022 11:54:52 PAGE 3   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      21
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,51 @@
+
+                     ORG 0000h
+                    mov P1,#00H
+repeat:            call squarwave      ; generate square wave
+                    call triwave           ; generate triangular wave
+                    call stairwave       ; generate staircase wave
+                    jmp repeat
+
+squarwave:       mov P1,#FFH
+                    call delay2sec
+                    mov P1,#00H
+                    call delay2sec
+                    ret
+
+triwave:         mov R7,#00H
+triwave1:        mov P1,R7
+                    inc R7
+                    cjne R7,#FFH,triwave1
+                    
+                    mov R7,#FFH
+triwave2:        mov P1,R7
+                    djnz R7,triwave2
+                    ret
+
+stairwave:         mov P1,#00H
+                    call delay2sec
+                    mov P1,#20H
+                    call delay2sec
+                    mov P1,#40H
+                    call delay2sec
+                    mov P1,#80H
+                    call delay2sec
+                    ret
+
+delay1sec:        mov r0,#10
+del2:             mov r1,#250
+del1:             mov r2,#250
+                    djnz r2,$
+                    djnz r1,del1
+                    djnz r0,del2
+                    ret
+
+delay2sec:         mov r0,#20
+del22:             mov r1,#250
+del21:            mov r2,#250
+                    djnz r2,$
+                    djnz r1,del21
+                    djnz r0,del22
+                    ret
+
+           END

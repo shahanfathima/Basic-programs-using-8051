@@ -1,0 +1,3 @@
+".\Objects\ADC0804.obj" 
+TO ".\Objects\ADC0804 C" 
+PRINT(".\Listings\ADC0804 C.m51") RAMSIZE(256) 

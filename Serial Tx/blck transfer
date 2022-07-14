@@ -1,0 +1,10 @@
+ORG 0000H
+MOV R1,#05		;Counter
+MOV R0,#30H		;Source
+MOV DPTR,#2000H ;Destination
+back:MOV A,@R0
+	 MOVX @DPTR,A	;A->ext destn
+	 INC R0			;Source increment
+	 INC DPTR		;destination increment
+	 DJNZ R1,back
+END

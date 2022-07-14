@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  SENDD                                                                09/24/2021 14:27:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\sendd.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE sendd.asm SET(SMALL) DEBUG PRINT(.\Listings\sendd.lst) OBJECT(.\Objects
+                      \sendd.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 758920            1     MOV TMOD, #20H ; Timer 1, mode 2
+0003 758DFD            2     MOV TH1,#0X0FD; is loaded to set the baud rate. (0X0FD)
+0006 758BFD            3     MOV TL1,#0X0FD; 
+0009 759850            4     MOV SCON, #50H
+000C D28E              5     SETB TR1 ; Run Timer 1
+000E 759944            6     MOV SBUF,#44H
+0011 3099FD            7     Loop: JNB TI, Loop ; Monitor TI
+0014 C299              8     CLR TI
+0016 80FE              9     Loop2:SJMP Loop2
+                      10     END
+A51 MACRO ASSEMBLER  SENDD                                                                09/24/2021 14:27:05 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LOOP . . . . . . .  C ADDR   0011H   A   
+LOOP2. . . . . . .  C ADDR   0016H   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

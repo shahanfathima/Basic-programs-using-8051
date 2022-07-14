@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  TIMERMODE1                                                           09/23/2021 20:43:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\TIMERMODE1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE TIMERMODE1.ASM SET(SMALL) DEBUG PRINT(.\Listings\TIMERMODE1.lst) OBJECT
+                      (.\Objects\TIMERMODE1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; LED BLINK WITH 1 SEC DELAY
+                       2     
+                       3     ; Find the count value for 50 ms
+                       4     
+                       5     ;n= delay / 1.085us
+                       6     ; n= 46083; 65356-46083=19453 =(4BFD)H
+                       7     
+                       8     ; run 20 times to get 1 s - 50ms X 20 =1000ms = 1sec
+                       9     
+0000 758901           10                     MOV TMOD,#01H
+0003 780A             11     AGAIN:  MOV R0,#10
+0005 758AFD           12     LOOP1:  MOV TL0,#0FDH
+0008 758C4B           13                     MOV TH0,#4BH
+000B D28C             14                     SETB TR0
+000D 308DFD           15     CHECK:  JNB TF0,CHECK
+0010 C28C             16                     CLR TR0         
+0012 C28D             17                     CLR TF0
+0014 D8EF             18                     DJNZ R0,LOOP1
+0016 B290             19                     CPL P1.0
+0018 80E9             20                     SJMP AGAIN
+                      21     END
+A51 MACRO ASSEMBLER  TIMERMODE1                                                           09/23/2021 20:43:02 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0003H   A   
+CHECK. . . . . . .  C ADDR   000DH   A   
+LOOP1. . . . . . .  C ADDR   0005H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

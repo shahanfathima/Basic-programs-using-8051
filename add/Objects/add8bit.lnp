@@ -1,0 +1,3 @@
+".\Objects\ADD.obj" 
+TO ".\Objects\add8bit" 
+PRINT(".\Listings\add8bit.m51") RAMSIZE(256) 

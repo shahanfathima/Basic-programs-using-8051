@@ -1,0 +1,51 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/24/2019  06:07:45  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\hwintasm.obj TO .\Objects\hardware int PRINT (.\Listings\hardware int.m51) RAMSIZE
+>>  (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\hwintasm.obj (HWINTASM)
+
+
+LINK MAP OF MODULE:  .\Objects\hardware int (HWINTASM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0037H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\hardware int (HWINTASM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        HWINTASM
+  D:00A8H         SYMBOL        IE
+  B:0088H.2       SYMBOL        IT1
+  C:0030H         SYMBOL        MAIN
+  D:0090H         SYMBOL        P1
+  C:0035H         SYMBOL        WAIT2
+  C:0000H         LINE#         2
+  C:0013H         LINE#         8
+  C:0015H         LINE#         9
+  C:0030H         LINE#         14
+  C:0032H         LINE#         15
+  C:0035H         LINE#         16
+  -------         ENDMOD        HWINTASM
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 000DH BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=55
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

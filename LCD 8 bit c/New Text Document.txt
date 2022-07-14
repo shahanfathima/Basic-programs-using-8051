@@ -1,0 +1,95 @@
+
+#include<REGX52.H>
+#include<stdio.h>
+
+#define LcdDataBus P2 
+sbit LCD_RS = P1^0; 
+sbit LCD_RW = P1^1;
+sbit LCD_EN = P1^2;
+ 
+  
+ void Lcd_CmdWrite(char cmd);
+ void Lcd_DataWrite(char dat);
+ void delay(int cnt);
+ 
+ 
+ 
+ void delay(int cnt)
+ { int i; 
+for(i=0;i<cnt;i++);
+ } 
+
+void lcd_data_string(unsigned char *str);
+ 
+ void Lcd_DataWrite(char dat)
+ { 
+LcdDataBus = dat //Send higher nibble 
+LCD_RS = 1; // Send HIGH pulse on RS pin for selecting data register 
+LCD_RW = 0; // Send LOW pulse on RW pin for Write operation
+ LCD_EN = 1; // Generate a High-to-low pulse on EN pin delay(1000); 
+delay(100); 
+	 LCD_EN = 0; 
+ 
+}
+
+
+
+ 
+ void Lcd_CmdWrite(char cmd) 
+{ 
+LcdDataBus = cmd
+LCD_RS = 0; // Send LOW pulse on RS pin for selecting Command register 
+LCD_RW = 0; // Send LOW pulse on RW pin for Write operation
+ LCD_EN = 1; // Generate a High-to-low pulse on EN pin delay(1000); 
+delay(100); 
+	LCD_EN = 0; 
+ 
+}
+
+
+void lcd_data_string(unsigned char *str) // Function to send data to string
+{
+int i=0;
+while(str[i]!='\0')
+{
+  Lcd_DataWrite(str[i]);
+  i++;
+  //delay(10);
+}
+return;
+}
+
+
+
+main()
+
+{
+	
+char buffer[10];
+int value = 123;
+	float value1 = 12.3;
+
+	
+	
+//Lcd_CmdWrite(0x02); // Initialize Lcd in 4-bit mode 
+Lcd_CmdWrite(0x28); // enable 5x7 mode for chars 
+Lcd_CmdWrite(0x0E); // Display OFF, Cursor ON 
+Lcd_CmdWrite(0x01); // Clear Display Lcd_CmdWrite(0x80); // Move the cursor to beginning of first line
+
+while(1)
+
+{
+	
+	Lcd_DataWrite='A';
+ //lcd_data_string("hello");
+	
+	//sprintf(buffer, "%d", value);
+	
+	// lcd_data_string(buffer);
+		//sprintf(buffer, "%.02f", value1);
+		 //lcd_data_string(buffer);
+	
+}
+
+
+}

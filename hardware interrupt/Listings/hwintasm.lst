@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  HWINTASM                                                             10/24/2019 06:07:45 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\hwintasm.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE hwintasm.asm SET(SMALL) DEBUG PRINT(.\Listings\hwintasm.lst) OBJECT(.\O
+                      bjects\hwintasm.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020030            2     LJMP MAIN       
+                       3     ;
+                       4     ;interrupt service routine (ISR) 
+                       5     ;for hardware external interrupt INT1
+                       6     ;
+0013                   7                     ORG 0013H
+0013 B291              8                     CPL P1.1        
+0015 32                9                     RETI            
+                      10     ;
+                      11     ;main program for initialization
+                      12     ;
+0030                  13                     ORG 30H
+0030 D28A             14     MAIN:   SETB IT1             ;on negative edge of INT1
+0032 75A884           15                     MOV IE,#10000100B       
+0035 80FE             16     WAIT2:  SJMP WAIT2      
+                      17                     END
+A51 MACRO ASSEMBLER  HWINTASM                                                             10/24/2019 06:07:45 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+IE . . . . . . . .  D ADDR   00A8H   A   
+IT1. . . . . . . .  B ADDR   0088H.2 A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+WAIT2. . . . . . .  C ADDR   0035H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

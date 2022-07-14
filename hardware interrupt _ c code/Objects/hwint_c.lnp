@@ -1,0 +1,3 @@
+".\Objects\HWINT_C.obj" 
+TO ".\Objects\hwint_c" 
+PRINT(".\Listings\hwint_c.m51") RAMSIZE(256) 

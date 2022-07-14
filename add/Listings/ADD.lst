@@ -1,0 +1,84 @@
+A51 MACRO ASSEMBLER  ADD                                                                  11/01/2017 06:28:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN .\Objects\ADD.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ADD.S SET(SMALL) DEBUG PRINT(.\Listings\ADD.lst) OBJECT(.\Objects\ADD.o
+                      bj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1                     ;1428
+
+                       2                     
+
+0000                   3                     org 0H
+
+  0090                 4                     stepper equ P1
+
+0000                   5     main:
+
+0000 759008            6                     mov stepper, #8H
+
+0003 1116              7                     acall delay
+
+0005 759002            8                     mov stepper, #2H
+
+0008 1116              9                     acall delay
+
+000A 759004           10                     mov stepper, #4H
+
+000D 1116             11                     acall delay
+
+000F 759001           12                     mov stepper, #1H
+
+0012 1116             13                     acall delay
+
+0014 80EA             14                     jmp main
+
+                      15     
+
+                      16     
+
+                      17             
+
+                      18     
+
+0016                  19     delay:  
+
+0016 A8FF             20                     MOV r0,0ffH
+
+0018                  21     loop4:          
+
+0018 A9FF             22                     mov r1,0ffh
+
+001A                  23     loop3:          
+
+001A D9FE             24                     djnz r1,loop3
+
+001C D8FA             25                     djnz r0,loop4
+
+001E 22               26                     ret
+
+                      27                     END
+
+A51 MACRO ASSEMBLER  ADD                                                                  11/01/2017 06:28:07 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0016H   A   
+LOOP3. . . . . . .  C ADDR   001AH   A   
+LOOP4. . . . . . .  C ADDR   0018H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+STEPPER. . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
